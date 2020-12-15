@@ -17,11 +17,11 @@ class HttpClient{
     client.close();
   }
 
-  Future<http.Response> get(String url, {Map<String, String> header}) async {
+  Future<http.Response> get(String url, {Map<String, String> header}) {
     if(client != null){
-      return await client.get(url, headers: header);
+      return client.get(url, headers: header);
     }else{
-      return await http.get(url, headers: header);
+      return http.get(url, headers: header);
     }
   }
 

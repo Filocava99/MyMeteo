@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'dart:convert';
 
 import 'package:http/http.dart';
 import 'package:my_meteo/HttpClient.dart';
@@ -13,20 +14,24 @@ class OWMClient extends HttpClient{
 
   OWMClient(this.apiKey);
 
-  Weather getWeather(String city, {String stateCode, String countryCode}){
+  Future<Weather> getWeather(String city, {String stateCode, String countryCode}) async{
     Map<String, String> header = HashMap();
     stateCode = stateCode.isNotEmpty ? ","+stateCode : "";
     countryCode = countryCode.isNotEmpty ? ","+ countryCode : "";
     header["q"] = city + stateCode + countryCode;
     header["appid"] = apiKey;
     var uri = Uri.http(openWeatherMapUrl, weatherPath, header);
-    Future<Response> response;
+    Response response;
     if(client != null){
-      response = client.get(uri, headers: header);
+      response = await client.get(uri, headers: header);
     }else{
-      response = get(uri, headers: header);
+      response = await get(uri, headers: header);
     }
-    if(response.)
+    if(response.statusCode == 200){
+      return Weather.fromJson(jsonDecode(response.body));
+    }else{
+      throw Exception('Failed to load weather');
+    }
   }
 
 }
