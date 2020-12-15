@@ -21,6 +21,7 @@ class OWMClient extends HttpClient {
     if (countryCode != "") countryCode = "," + countryCode;
     header["q"] = city + stateCode + countryCode;
     header["appid"] = apiKey;
+    header["units"] = "metric";
     var uri = Uri.http(_openWeatherMapUrl, _weatherPath, header);
     Response response = await get(uri, headers: header);
     if (response.statusCode == 200) {
@@ -30,7 +31,7 @@ class OWMClient extends HttpClient {
     }
   }
 
-  Future<Forecast> getForecast(String city, {String stateCode = "", String countryCode = ""}) async{
+  Future<FiveDaysForecast> getForecast(String city, {String stateCode = "", String countryCode = ""}) async{
     Map<String, String> header = HashMap();
     if (stateCode != "") stateCode = "," + stateCode;
     if (countryCode != "") countryCode = "," + countryCode;
@@ -38,6 +39,10 @@ class OWMClient extends HttpClient {
     header["appid"] = apiKey;
     var uri = Uri.http(_openWeatherMapUrl, _forecastPath, header);
     Response response = await get(uri, headers: header);
-    print(jsonDecode(response.body));
+    if (response.statusCode == 200) {
+      return FiveDaysForecast.fromJson(jsonDecode(response.body));
+    } else {
+    throw Exception('Failed to load weather');
+    }
   }
 }
