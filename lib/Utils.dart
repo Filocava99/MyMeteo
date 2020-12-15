@@ -9,7 +9,7 @@ class Utils{
 
   Utils._internal();
 
-  double kelvinToCelsius(int kelvin){
+  double kelvinToCelsius(double kelvin){
     return kelvin-kelvinToCelsiusConversionConst;
   }
 }
