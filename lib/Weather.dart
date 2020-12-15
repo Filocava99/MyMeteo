@@ -12,8 +12,8 @@ class Weather{
   final int iconId;
 
 
-  Weather({required this.name, required this.temp, required this.clouds, required this.windSpeed, required this.wheatherId,
-      required this.weatherName, required this.description, required this.iconId});
+  Weather({this.name, this.temp, this.clouds, this.windSpeed, this.wheatherId,
+      this.weatherName, this.description, this.iconId});
 
   factory Weather.fromJson(Map<String, dynamic> json){
 
