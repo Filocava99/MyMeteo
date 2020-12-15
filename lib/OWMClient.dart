@@ -37,6 +37,7 @@ class OWMClient extends HttpClient {
     if (countryCode != "") countryCode = "," + countryCode;
     header["q"] = city + stateCode + countryCode;
     header["appid"] = apiKey;
+    header["units"] = "metric";
     var uri = Uri.http(_openWeatherMapUrl, _forecastPath, header);
     Response response = await get(uri, headers: header);
     if (response.statusCode == 200) {
