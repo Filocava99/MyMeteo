@@ -1,6 +1,6 @@
 import 'dart:collection';
 
-import 'package:my_meteo/Weather.dart';
+import 'file:///C:/Users/filip/Desktop/Workspaces/AndroidStudio/my_meteo/lib/meteo/Weather.dart';
 
 class FiveDaysForecast {
 

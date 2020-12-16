@@ -1,4 +1,4 @@
-import 'package:my_meteo/Utils.dart';
+import 'file:///C:/Users/filip/Desktop/Workspaces/AndroidStudio/my_meteo/lib/utils/Utils.dart';
 
 class Weather {
   final String _name;

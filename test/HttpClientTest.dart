@@ -1,6 +1,6 @@
 import 'dart:collection';
 
-import 'package:my_meteo/HttpClient.dart';
+import 'file:///C:/Users/filip/Desktop/Workspaces/AndroidStudio/my_meteo/lib/http/HttpClient.dart';
 import 'package:test/test.dart';
 
 void main(){

@@ -1,8 +1,6 @@
-import 'dart:collection';
-
-import 'package:my_meteo/Forecast.dart';
-import 'package:my_meteo/OWMClient.dart';
-import 'package:my_meteo/Weather.dart';
+import 'package:my_meteo/http/OWMClient.dart';
+import 'package:my_meteo/meteo/Forecast.dart';
+import 'package:my_meteo/meteo/Weather.dart';
 import 'package:test/test.dart';
 
 void main() {

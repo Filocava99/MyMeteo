@@ -2,10 +2,10 @@ import 'dart:collection';
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:my_meteo/HttpClient.dart';
-import 'package:my_meteo/Weather.dart';
+import 'package:my_meteo/meteo/Forecast.dart';
+import 'package:my_meteo/meteo/Weather.dart';
 
-import 'Forecast.dart';
+import 'HttpClient.dart';
 
 class OWMClient extends HttpClient {
   final _openWeatherMapUrl = "api.openweathermap.org";
@@ -20,7 +20,7 @@ class OWMClient extends HttpClient {
     if (stateCode != "") stateCode = "," + stateCode;
     if (countryCode != "") countryCode = "," + countryCode;
     header["q"] = city + stateCode + countryCode;
-    header["appid"] = apiKey;
+    header["appid"] = _apiKey;
     header["units"] = "metric";
     var uri = Uri.http(_openWeatherMapUrl, _weatherPath, header);
     Response response = await get(uri, headers: header);
@@ -36,7 +36,7 @@ class OWMClient extends HttpClient {
     if (stateCode != "") stateCode = "," + stateCode;
     if (countryCode != "") countryCode = "," + countryCode;
     header["q"] = city + stateCode + countryCode;
-    header["appid"] = apiKey;
+    header["appid"] = _apiKey;
     header["units"] = "metric";
     var uri = Uri.http(_openWeatherMapUrl, _forecastPath, header);
     Response response = await get(uri, headers: header);
