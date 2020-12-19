@@ -4,6 +4,10 @@ A mobile forecast and weather app.
 
 This project was made for a job interview.
 
+## UI mockup:
+
+![](https://i.imgur.com/gIuTfca.png=100px)
+
 # TODOs
 * Splash screen
 * Favourite locations
