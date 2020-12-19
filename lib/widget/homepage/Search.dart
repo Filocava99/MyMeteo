@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 class Search extends SearchDelegate {
+
+  Function(String) callback;
+
+  Search(this.callback);
+
   @override
   List<Widget> buildActions(BuildContext context) {
     return <Widget>[
@@ -18,7 +23,8 @@ class Search extends SearchDelegate {
     return IconButton(
         icon: Icon(Icons.arrow_back),
         onPressed: () {
-          Navigator.pop(context);
+          callback(query);
+          //Navigator.pop(context);
         });
   }
 
@@ -26,9 +32,11 @@ class Search extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
+
+    Navigator.pop(context);
     return Container(
       child: Center(
-          child: Text(selectedResult)
+          child: Text(query)
       ),
     );
   }
@@ -44,8 +52,8 @@ class Search extends SearchDelegate {
         return ListTile(
             title: Text(suggestions[index]),
             onTap: () {
-              selectedResult = suggestions[index];
-              showResults(context);
+              query = suggestions[index];
+              //showResults(context);
             }
         );
       },
