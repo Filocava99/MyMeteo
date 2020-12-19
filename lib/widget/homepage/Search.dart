@@ -23,8 +23,7 @@ class Search extends SearchDelegate {
     return IconButton(
         icon: Icon(Icons.arrow_back),
         onPressed: () {
-          callback(query);
-          //Navigator.pop(context);
+          Navigator.pop(context);
         });
   }
 
@@ -32,8 +31,10 @@ class Search extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-
-    Navigator.pop(context);
+    Future.delayed(Duration.zero, () {
+      close(context, query);
+      callback(query);
+    });
     return Container(
       child: Center(
           child: Text(query)

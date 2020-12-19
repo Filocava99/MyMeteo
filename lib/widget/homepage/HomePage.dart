@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_meteo/utils/Utils.dart';
@@ -17,8 +19,8 @@ class _HomePageState extends State<HomePage> {
   int _counter = 0;
   String cityName = "Ravenna";
 
-  callback(value) {
-    cityName = value;
+  callback(String value) {
+    setState(() {cityName = value;});
   }
 
   @override
@@ -121,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                   Row(children: [
                     Image.network(
                         "http://openweathermap.org/img/wn/10d@2x.png"),
-                    Text(Utils.days[index+1],
+                    Text(Utils.days[index + 1],
                         style: GoogleFonts.roboto(
                             fontSize: 16, color: Colors.white))
                   ]),
