@@ -17,3 +17,7 @@ This project was made for a job interview. It does not have any commercial purpo
 * UX improvements
 * UI polishing
 * Click on future days' forecasts to get more specific details
+
+
+## How to open the project
+The project was made using Android Studio, so it is strongly recommended to use it to open the project.
