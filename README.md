@@ -4,7 +4,7 @@ A mobile forecast and weather app.
 
 This project was made for a job interview. It does not have any commercial purpose.
 
-## UI mockup:
+## Screenshots:
 
 ![](https://i.imgur.com/7ZQxV77.png=100px)
 ![](https://i.imgur.com/bgkP0Dt.png=100px)
