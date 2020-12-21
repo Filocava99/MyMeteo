@@ -9,7 +9,7 @@ This project was made for a job interview. It does not have any commercial purpo
 ![](https://i.imgur.com/7ZQxV77.png=100px)
 ![](https://i.imgur.com/bgkP0Dt.png=100px)
 
-# TODOs
+## TODOs
 * Use GPS to automatically display weather and forecast for your current location
 * Splash screen
 * Favourite locations
