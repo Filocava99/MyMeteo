@@ -1,5 +1,3 @@
-import 'file:///C:/Users/filip/Desktop/Workspaces/AndroidStudio/my_meteo/lib/utils/Utils.dart';
-
 class Weather {
   final String _name;
   final double _temp;
@@ -12,41 +10,32 @@ class Weather {
   final String _description;
   final String _iconId;
 
+
   Weather(
-      {String name,
-      double temp,
-      double tempMin,
-      double tempMax,
-      int clouds,
-      double windSpeed,
-      int weatherId,
-      String weatherName,
-      String description,
-      String iconId})
-      : _name = name,
-        _temp = temp,
-        _tempMin = tempMin,
-        _tempMax = tempMax,
-        _clouds = clouds,
-        _windSpeed = windSpeed,
-        _weatherId = weatherId,
-        _weatherName = weatherName,
-        _description = description,
-        _iconId = iconId;
+      this._name,
+      this._temp,
+      this._tempMin,
+      this._tempMax,
+      this._clouds,
+      this._windSpeed,
+      this._weatherId,
+      this._weatherName,
+      this._description,
+      this._iconId);
 
   factory Weather.fromJson(Map<String, dynamic> json) {
     print(json);
     return Weather(
-        name: json["name"],
-        temp: json["main"]["temp"] + .0,
-        tempMin: json["main"]["temp_min"] + .0,
-        tempMax: json["main"]["temp_max"] + .0,
-        clouds: json["clouds"]["all"],
-        windSpeed: json["wind"]["speed"] + .0,
-        weatherId: json["weather"][0]["id"],
-        weatherName: json["weather"][0]["main"],
-        description: json["weather"][0]["description"],
-        iconId: json["weather"][0]["icon"]);
+        json["name"],
+        json["main"]["temp"] + .0,
+        json["main"]["temp_min"] + .0,
+        json["main"]["temp_max"] + .0,
+        json["clouds"]["all"],
+        json["wind"]["speed"] + .0,
+        json["weather"][0]["id"],
+        json["weather"][0]["main"],
+        json["weather"][0]["description"],
+        json["weather"][0]["icon"]);
   }
 
   String get iconId => _iconId;
