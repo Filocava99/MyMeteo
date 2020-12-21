@@ -24,7 +24,6 @@ class Weather {
       this._iconId);
 
   factory Weather.fromJson(Map<String, dynamic> json) {
-    print(json);
     return Weather(
         json["name"],
         json["main"]["temp"] + .0,
