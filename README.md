@@ -2,7 +2,7 @@
 
 A mobile forecast and weather app.
 
-This project was made for a job interview. It has not any commercial purpose.
+This project was made for a job interview. It does not have any commercial purpose.
 
 ## UI mockup:
 
