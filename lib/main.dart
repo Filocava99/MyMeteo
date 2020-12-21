@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_meteo/widget/homepage/HomePage.dart';
-import 'package:my_meteo/widget/homepage/Search.dart';
 
 void main() {
   runApp(MainWidget());
