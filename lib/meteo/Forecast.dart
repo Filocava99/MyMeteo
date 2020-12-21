@@ -73,16 +73,16 @@ class FiveDaysForecast {
     for (var node in json["list"]) {
       var date = DateTime.fromMillisecondsSinceEpoch(node["dt"] * 1000);
       Weather weather = Weather(
-          name: cityName,
-          temp: node["main"]["temp"]+.0,
-          tempMin: node["main"]["temp_min"]+.0,
-          tempMax: node["main"]["temp_max"]+.0,
-          clouds: node["clouds"]["all"],
-          windSpeed: node["wind"]["speed"]+.0,
-          weatherId: node["weather"][0]["id"],
-          weatherName: node["weather"][0]["main"],
-          description: node["weather"][0]["description"],
-          iconId: node["weather"][0]["icon"]
+          cityName,
+          node["main"]["temp"]+.0,
+          node["main"]["temp_min"]+.0,
+          node["main"]["temp_max"]+.0,
+          node["clouds"]["all"],
+          node["wind"]["speed"]+.0,
+          node["weather"][0]["id"],
+          node["weather"][0]["main"],
+          node["weather"][0]["description"],
+          node["weather"][0]["icon"]
       );
       Forecast forecast = Forecast(weather, date);
       if(!days.containsKey(date.weekday)){
