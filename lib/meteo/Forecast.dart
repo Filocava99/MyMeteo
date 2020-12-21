@@ -8,6 +8,65 @@ class FiveDaysForecast {
 
   FiveDaysForecast(this._daysForecasts);
 
+  //Cache for better performance
+  List<Forecast> _nextThreeDaysForecast;
+
+  //Cache for better performance
+  List<Forecast> _nextFiveHoursForecast;
+
+
+  Forecast getCurrentForecast(){
+    return _daysForecasts[DateTime.now().weekday].values.first;
+  }
+
+  String getCurrentWeatherImageUrl(){
+    return getCurrentForecast().getWeatherImageUrl();
+  }
+
+  List<Forecast> getNextThreeDaysForecast(){
+    if(_nextThreeDaysForecast == null){
+      int begin = DateTime.now().weekday;
+      int daysCount = 0;
+      List<Forecast> daysForecast = List();
+      for(int i = begin; i <= 7 && daysCount < 3; i++){
+        daysForecast.add(_daysForecasts[i].values.first);
+        if(i == 7){
+          i = 1;
+        }
+        daysCount++;
+      }
+      _nextThreeDaysForecast = daysForecast;
+      return daysForecast;
+    }else{
+      return _nextThreeDaysForecast;
+    }
+  }
+
+  List<Forecast> getNextFiveHours(){
+    if(_nextFiveHoursForecast == null){
+      int begin = DateTime.now().weekday;
+      int hoursCount = 0;
+      List<Forecast> forecasts = List();
+      for(int i = begin; i <= 7 && hoursCount < 5; i++) {
+        Map<int, Forecast> dayHours = _daysForecasts[i];
+        List<int> sortedKeys = dayHours.keys.toList();
+        sortedKeys.sort();
+        for (int key in sortedKeys) {
+          forecasts.add(dayHours[key]);
+          hoursCount++;
+          if (hoursCount == 5) {
+            break;
+          }
+        }
+        if (i == 7) i = 1;
+      }
+      _nextFiveHoursForecast = forecasts;
+      return forecasts;
+    }else{
+      return _nextFiveHoursForecast;
+    }
+  }
+
   factory FiveDaysForecast.fromJson(Map<String, dynamic> json){
     String cityName = json["city"]["name"];
     Map<int, Map<int, Forecast>> days = HashMap();
@@ -26,10 +85,10 @@ class FiveDaysForecast {
           iconId: node["weather"][0]["icon"]
       );
       Forecast forecast = Forecast(weather, date);
-      if(!days.containsKey(date.day)){
-        days[date.day] = HashMap<int, Forecast>();
+      if(!days.containsKey(date.weekday)){
+        days[date.weekday] = HashMap<int, Forecast>();
       }
-      days[date.day][date.hour] = forecast;
+      days[date.weekday][date.hour] = forecast;
     }
     return FiveDaysForecast(days);
   }
@@ -47,4 +106,8 @@ class Forecast {
   Weather get weather => _weather;
 
   DateTime get dateTime => _dateTime;
+
+  String getWeatherImageUrl(){
+    return "http://openweathermap.org/img/wn/${_weather.iconId}@4x.png";
+  }
 }

@@ -22,4 +22,8 @@ class Utils{
   double kelvinToCelsius(double kelvin){
     return kelvin-kelvinToCelsiusConversionConst;
   }
+
+  static String capitalizeFirtLetter(String string){
+    return string[0].toUpperCase() + string.substring(1,string.length);
+  }
 }
